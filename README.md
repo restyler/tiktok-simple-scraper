@@ -85,3 +85,7 @@ print_r($response);
 ```
 
 
+## Examples, Error Handling
+See full example file [here](examples/index.php).
+
+
