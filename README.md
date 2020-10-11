@@ -23,11 +23,43 @@ $tiktokClient = new Client([
 
 $response = $tiktokClient->getUserInfo([
     'username' => 'realmadrid',
-    // 'second-proxy' => true,  - use fallback proxy in case you see weird errors like 404 for existing accounts. Every method supports this.
+    // 'second-proxy' => '1',  - use fallback proxy in case you see weird errors like 404 for existing accounts. Every method supports this.
 ]);
 
 print_r($response);
 // response now contains array of user info.
+/*
+Array
+(
+    [secUid] => MS4wLjABAAAAdi4wJZtAiIre_rQ1KiFteDmtrGBDIyoleHRNsjL14-Enf8aVfkLUJ0l_LcJPZkiv
+    [userId] => 6693776501107033094
+    [isSecret] => 
+    [uniqueId] => realmadrid
+    [nickName] => Real Madrid C.F.
+    [signature] => ⚽️ The official Real Madrid C.F. account
+🏆 13 times European Champions
+    [covers] => Array
+        (
+            [0] => https://p77-sign-sg.tiktokcdn.com/imgurl
+            [1] => https://p77-sign-sg.tiktokcdn.com/imgurl2
+        )
+
+    [coversMedium] => Array
+        (
+            [0] => https://p77-sign-sg.tiktokcdn.com/imgurl3
+            [1] => https://p77-sign-sg.tiktokcdn.com/imgurl4
+        )
+
+    [following] => 8
+    [fans] => 3800000
+    [heart] => 28900000
+    [video] => 338
+    [verified] => 1
+    [digg] => 0
+    [ftc] => 
+    [relation] => -1
+    [openFavorite] => 
+) */
 ```
 
 
@@ -84,6 +116,8 @@ print_r($response);
 
 ```
 
+## Proxy Fallback
+This RapidAPI API uses fastest proxy available for the moment. It is problematic to detect when Tiktok bans some ip address, so if you use the API heavily Tiktok may start throwing 404 responses for existing resources. This can be mitigated by using distributed proxy network via `&second-proxy=1` query param (available for all library public methods). Distributed proxy network is typically slower but ipractically impossible to ban.
 
 ## Examples, Error Handling
 See full example file [here](examples/index.php).
