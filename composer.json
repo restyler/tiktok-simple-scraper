@@ -1,5 +1,13 @@
 {
+    "name": "restyler/tiktok-simple-scraper",
+    "description": "Simple Guzzle TikTok scraper, using Rapid API.",
+    "type": "library",
     "require": {
-       "guzzlehttp/guzzle": "^7.0"
-    }
- }
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "autoload": {
+      "psr-4": {
+        "TiktokScraper\\": "src/"
+      }
+   }
+}
