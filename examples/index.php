@@ -5,7 +5,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use TiktokScraper\Client;
 
 $client = new Client([
-        'rapidapi_key' => 'YOUR-RAPID-API-KEY' // get your key on https://rapidapi.com/restyler/api/tiktok12
+        'apiroad_key' => 'YOUR-APIROAD-KEY' // get your key on https://apiroad.net/marketplace/apis/tiktok
     ]
 );
 
@@ -17,8 +17,6 @@ try {
     $response = $client->getUserInfo([
         'username' => 'realmadrid'
     ]);
-
-    
     
     echo '<h2>Real Madrid user info:</h2><pre>';
     print_r($response);
@@ -28,7 +26,7 @@ try {
     ### get user feed
     #########################
     $response = $client->getUserFeed([
-        'limit' => '5',
+        'limit' => 5,
         'username' => 'realmadrid'
     ]);
     
@@ -37,6 +35,7 @@ try {
     echo '</pre>';
 
 
+    
     #########################
     ### get video description
     #########################
@@ -47,7 +46,7 @@ try {
     echo '<h2>Video metadata by URL:</h2><pre>';
     print_r($response);
     echo '</pre>';
-
+    exit();
 
     #########################
     ### get music information
@@ -69,14 +68,10 @@ try {
 
     
 } catch (GuzzleHttp\Exception\ClientException $e) {
-    var_dump($e->getRequest());
     $response = $e->getResponse();
-
-    $jsonBody = json_decode($response->getBody(), true);
-
-    echo 'Status code: ' . $response->getStatusCode() . '<br />';
-    echo 'Err message: ' . $jsonBody['message'];
-
+    
+    echo 'Status code: ' . $response->getStatusCode() . "\n";
+    echo 'Err message: ' . $e->getMessage() . "\n";
     
 
 }

@@ -8,18 +8,18 @@ class Client {
     private $guzzleClient;
     public function __construct(array $config = [])
     {
-        if (!isset($config['rapidapi_key'])) {
-            throw new \Exception('rapidapi_key must be set');
+        if (!isset($config['apiroad_key'])) {
+            throw new \Exception('apiroad_key must be set');
         }
         
         $this->guzzleClient = new GuzzleClient([
             // Base URI is used with relative requests
-            'base_uri' => 'https://tiktok12.p.rapidapi.com',
+            'base_uri' => 'https://tiktok.apiroad.net',
             // You can set any number of default request options.
             'timeout'  => 30,
             'headers' => [
-                'x-rapidapi-host' => 'tiktok12.p.rapidapi.com',
-                'x-rapidapi-key' => $config['rapidapi_key'] // get your key on https://rapidapi.com/restyler/api/tiktok12
+                'x-apiroad-host' => 'tiktok.apiroad.net',
+                'x-apiroad-key' => $config['apiroad_key'] // get your key on https://rapidapi.com/restyler/api/tiktok12
             ]
         ]);
 
